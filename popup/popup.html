@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blasphemy Slate - Quick Access</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Bookmarks</h1>
+        <button id="goToOptions" title="Go to Options/Management Dashboard">⚙️</button>
+    </div>
+
+    <form id="addBookmarkForm" class="add-form">
+        <input type="text" id="titleInput" placeholder="Title (Required)" required>
+        <input type="url" id="urlInput" placeholder="URL (Required)" required>
+        <input type="text" id="tagsInput" placeholder="Tags (comma-separated)">
+        
+        <select id="folderSelect">
+            <option value="inbox">Inbox (Loading...)</option>
+        </select>
+        
+        <button type="submit" id="saveBtn">Save Bookmark</button>
+    </form>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search Bookmarks...">
+    </div>
+
+    <ul id="bookmarkList">
+        </ul>
+
+    <script type="module" src="popup.js"></script>
+</body>
+</html>

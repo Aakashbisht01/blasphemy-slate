@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blasphemy Slate: Extension Settings</title>
+    <link rel="stylesheet" href="options.css">
+    
+    <style>
+        /* Styles for the inline edit form */
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 10px;
+            border-top: 1px dashed #404040;
+            margin-top: 10px;
+        }
+        .edit-form input, .edit-form select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #424242;
+            background-color: #303030;
+            color: #e0e0e0;
+        }
+        .edit-form button {
+            margin-right: 5px;
+            width: 100px;
+        }
+        
+        /* Styles for the bookmark list view */
+        .bookmark-view {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .bookmark-view strong, .bookmark-view a {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .bookmark-view .edit-btn, .bookmark-view .delete-btn {
+            margin-left: 5px;
+        }
+        .bookmark-view .edit-btn {
+             background-color: #424242;
+             color: #e0e0e0;
+             padding: 6px 12px;
+             font-size: 0.9em;
+             border-radius: 4px;
+        }
+        .bookmark-view .edit-btn:hover {
+            background-color: #505050;
+        }
+
+        /* Styles for Folder List to support drag-and-drop */
+        .folder-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #353535;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .folder-item .folder-actions button {
+            margin-left: 5px;
+        }
+        
+        /* Drag and Drop Feedback */
+        .url-item.dragging {
+            opacity: 0.3;
+            border: 2px dashed #1e88e5;
+        }
+        .folder-item.drag-over-folder {
+            border: 2px dashed #8bc34a;
+            box-shadow: 0 0 10px rgba(139, 195, 74, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Blasphemy Slate</h1>
+        <p class="subtitle">Full Bookmark Management Dashboard</p>
+    </header>
+
+    <main>
+        <div id="messageBox" style="display:none;"></div>
+
+        <section id="folderManagementSection">
+            <h2>Folder Organization</h2>
+            <div id="addFolderForm" class="input-group">
+                <input type="text" id="newFolderName" placeholder="Enter new folder name..." required>
+                <button id="addFolderBtn" class="utility-btn">Create Folder</button>
+            </div>
+            
+            <div id="folderListContainer"> 
+                <ul id="folderList">
+                    <li class="loading-message">Loading folders...</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+        
+        <section id="managementSection">
+            <h2>Manage Bookmarks</h2>
+
+            <div class="actions-bar">
+                <button id="clearAllBtn" class="danger-btn">Clear All Bookmarks</button>
+            </div>
+            
+            <div id="urlListContainer">
+                <ul id="bookmarkList">
+                    <li class="loading-message">Fetching saved bookmarks...</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="importExportSection">
+            <h2>Data Utilities</h2>
+            
+            <div class="utility-row">
+                <button id="exportBtn" class="utility-btn">Export Bookmarks (HTML)</button>
+            </div>
+            
+            <div class="utility-row">
+                <input type="file" id="importFile" accept=".html" style="display:none;">
+                <button id="importBtn" class="utility-btn">Import Bookmarks (HTML)</button>
+                <p class="note">Imports from standard browser HTML bookmark files.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="options.js" type="module"></script>
+</body>
+</html>

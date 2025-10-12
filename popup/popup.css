@@ -1,0 +1,127 @@
+/* popup/popup.css */
+
+/* Global Reset and Body Styling */
+body {
+    width: 300px; /* Fixed width for the popup */
+    min-height: 100px;
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #212121; /* Dark Gray Background */
+    color: #f5f5f5; /* Light Text */
+    line-height: 1.4;
+}
+
+h1, h2 {
+    color: #e0e0e0;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #424242; /* Subtle divider */
+    margin: 15px 0;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #303030;
+}
+
+/* Input and Form Styling */
+#addBookmarkForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Spacing between inputs */
+}
+
+input[type="text"], 
+input[type="url"] {
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: 1px solid #424242; /* Subtle border */
+    border-radius: 6px; /* Rounded corners */
+    background-color: #303030; /* Slightly lighter dark background for contrast */
+    color: #f5f5f5;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus, 
+input[type="url"]:focus {
+    outline: none;
+    border-color: #1e88e5; /* Highlight focus with button color */
+}
+
+/* Button Styling */
+#saveBtn {
+    background-color: #1e88e5; /* Blue Background */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#saveBtn:hover {
+    background-color: #1565c0; /* Darker Blue on Hover */
+}
+
+/* Bookmark List Styling */
+#viewBookmarksSection {
+    margin-top: 15px;
+}
+
+#bookmarkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 180px; /* Makes the list scrollable */
+    overflow-y: auto;
+    border-top: 1px solid #424242;
+    padding-top: 5px;
+}
+
+#bookmarkList::-webkit-scrollbar {
+    width: 6px;
+}
+#bookmarkList::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 3px;
+}
+
+#bookmarkList li {
+    background-color: #2a2a2a; /* Slightly darker than body */
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#bookmarkList li:hover {
+    background-color: #353535;
+}
+
+#bookmarkList a {
+    color: #90caf9; /* Light blue for links */
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#bookmarkList p {
+    font-size: 0.85em;
+    color: #a0a0a0; /* Subtle gray for tags/details */
+    margin: 2px 0 0 0;
+}
