@@ -1,6 +1,6 @@
 import { getBookmarks, saveBookmark, deleteBookmark, getFolders } from '../background/utils/storage.js'; 
 
-// --- Global State and DOM References ---
+
 const titleInput = document.getElementById('titleInput');
 const urlInput = document.getElementById('urlInput');
 const tagsInput = document.getElementById('tagsInput');
@@ -15,7 +15,7 @@ let folders = [];
 const INBOX_FOLDER_ID = 'inbox';
 
 
-// --- Folder Helpers ---
+// Folder Helpers 
 
 const loadFoldersAndPopulateSelect = async () => {
     try {
@@ -47,7 +47,7 @@ const getFolderNameById = (id) => {
 };
 
 
-// --- Core Feature Functions ---
+//  Core Feature Functions 
 
 const autoFillCurrentTab = async () => {
     try {
@@ -190,7 +190,7 @@ const handleListClick = async (event) => {
 };
 
 
-// --- Initialization ---
+// Initialization 
 
 document.addEventListener('DOMContentLoaded', async () => {
     await autoFillCurrentTab(); 

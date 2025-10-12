@@ -9,9 +9,9 @@ import {
     addFolder, 
     deleteFolder,
     updateBookmark
-} from '../background/utils/storage.js'; // ⬅️ CRITICAL PATH FIX
+} from '../background/utils/storage.js'; 
 
-// --- DOM References ---
+
 const folderList = document.getElementById('folderList');
 const newFolderNameInput = document.getElementById('newFolderName');
 const addFolderBtn = document.getElementById('addFolderBtn');
@@ -24,14 +24,14 @@ const importBtn = document.getElementById('importBtn');
 const importFileInput = document.getElementById('importFile');
 const messageBox = document.getElementById('messageBox');
 
-// --- State ---
+
 let allBookmarks = []; 
 let allFolders = []; 
 const INBOX_FOLDER_ID = 'inbox';
 let isDragging = false;
 let currentDragBookmarkId = null;
 
-// --- UI Helper Functions ---
+
 
 const showMessage = (message, isError = false) => {
     messageBox.textContent = message;
@@ -46,7 +46,7 @@ const showMessage = (message, isError = false) => {
     }, 4000);
 };
 
-// --- Folder Management Functions (CRUD) ---
+
 
 const renderFolders = (foldersToRender) => {
     folderList.innerHTML = '';
@@ -86,7 +86,7 @@ const handleFolderClick = async (event) => {
     if (target.classList.contains('delete-folder-btn')) {
         handleDeleteFolder(id);
     } else if (target.classList.contains('rename-folder-btn')) {
-        // --- Rename Folder Logic ---
+ 
         const folderItem = target.closest('.folder-item');
         const span = folderItem.querySelector('.folder-name');
         const currentName = span.textContent.split(' (')[0]; 
@@ -140,16 +140,16 @@ const handleDeleteFolder = async (folderId) => {
     try {
         const bookmarksToMove = allBookmarks.filter(b => b.folderId === folderId);
         
-        // 1. Update each bookmark to point to the Inbox
+       
         const movePromises = bookmarksToMove.map(b => 
             updateBookmark(b.id, { folderId: INBOX_FOLDER_ID })
         );
         await Promise.all(movePromises);
 
-        // 2. Delete the folder itself
+    
         await deleteFolder(folderId);
 
-        // 3. Reload all data
+   
         await loadAndDisplayAllData(); 
         showMessage(`Folder "${folder.name}" deleted. ${count} bookmarks moved to Inbox.`);
     } catch (e) {
@@ -157,7 +157,7 @@ const handleDeleteFolder = async (folderId) => {
     }
 };
 
-// --- Bookmark Functions (Rendering, Edit, Delete) ---
+
 
 const renderBookmarks = (bookmarksToRender) => {
     bookmarkList.innerHTML = ''; 
@@ -195,9 +195,7 @@ const renderBookmarks = (bookmarksToRender) => {
     });
 };
 
-/**
- * Generates the inline edit form HTML for a bookmark.
- */
+
 const createEditForm = (b) => {
     const folderOptions = allFolders.map(f => 
         `<option value="${f.id}" ${f.id === (b.folderId || INBOX_FOLDER_ID) ? 'selected' : ''}>${f.name}</option>`
@@ -295,7 +293,7 @@ const handleClearAll = async () => {
     }
 };
 
-// --- Drag and Drop Logic (Move to Folder) ---
+
 
 const handleDragStart = (event) => {
     const target = event.target;
@@ -350,11 +348,11 @@ const handleDrop = async (event) => {
 };
 
 
-// --- Initialization and Loaders ---
+
 
 const loadAndDisplayAllData = async () => {
     try {
-        // 1. Load Folders
+      
         const fetchedFolders = await getFolders();
         allFolders = fetchedFolders || [];
         if (!allFolders.some(f => f.id === INBOX_FOLDER_ID)) {
@@ -362,7 +360,7 @@ const loadAndDisplayAllData = async () => {
         }
         renderFolders(allFolders);
 
-        // 2. Load Bookmarks
+       
         const fetchedBookmarks = await getBookmarks();
         allBookmarks = fetchedBookmarks || [];
         renderBookmarks(allBookmarks);
@@ -374,22 +372,21 @@ const loadAndDisplayAllData = async () => {
 };
 
 
-// --- Event Listener Registration ---
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initial Data Load
+ 
     loadAndDisplayAllData(); 
 
-    // 2. Folder Management Listeners
+   
     addFolderBtn.addEventListener('click', handleAddFolder);
     folderList.addEventListener('click', handleFolderClick); 
     
-    // 3. Bookmark Management Listeners
     clearAllBtn.addEventListener('click', handleClearAll);
     bookmarkList.addEventListener('click', handleBookmarkListClick); 
     bookmarkList.addEventListener('submit', handleEditSubmit); 
 
-    // 4. Drag and Drop Listeners
+ 
     bookmarkList.addEventListener('dragstart', handleDragStart);
     bookmarkList.addEventListener('dragend', handleDragEnd);
     
@@ -397,6 +394,5 @@ document.addEventListener('DOMContentLoaded', () => {
     folderList.addEventListener('dragleave', handleDragLeave);
     folderList.addEventListener('drop', handleDrop);
     
-    // NOTE: Import/Export handlers (handleExport/handleImportFile) are assumed to be implemented
-    // outside of this snippet but should be reconnected to exportBtn/importBtn here.
+
 });

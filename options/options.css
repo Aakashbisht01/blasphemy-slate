@@ -1,14 +1,12 @@
-/* options/options.css */
 
-/* Global Reset and Base Styles */
 body {
-    width: 600px; /* Wider than popup for dashboard feel */
+    width: 600px; 
     min-height: 400px;
     margin: 0 auto;
     padding: 30px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background-color: #1f1f1f; /* Deep dark background */
-    color: #e0e0e0; /* Light text color */
+    background-color: #1f1f1f; 
+    color: #e0e0e0; 
     line-height: 1.6;
 }
 
@@ -37,7 +35,7 @@ h2 {
     font-size: 0.9em;
 }
 
-/* --- Button Styles --- */
+
 button {
     padding: 10px 15px;
     border: none;
@@ -55,9 +53,9 @@ button {
     gap: 10px;
 }
 
-/* Danger Button (Clear All) */
+
 .danger-btn {
-    background-color: #e53935; /* Red */
+    background-color: #e53935; 
     color: white;
 }
 .danger-btn:hover:not(:disabled) {
@@ -70,7 +68,7 @@ button {
     opacity: 0.7;
 }
 
-/* Utility Buttons (Import/Export) */
+
 .utility-btn {
     background-color: #424242;
     color: #e0e0e0;
@@ -84,7 +82,7 @@ button {
     cursor: not-allowed;
 }
 
-/* --- URL List Styling (Scrollable Section) --- */
+
 #urlListContainer {
     border: 1px solid #333333;
     border-radius: 8px;
@@ -96,12 +94,12 @@ button {
     list-style: none;
     padding: 0;
     margin: 0;
-    /* Scrollable Feature */
+ 
     max-height: 250px;
     overflow-y: auto;
 }
 
-/* Custom Scrollbar for modern look */
+
 #urlList::-webkit-scrollbar {
     width: 8px;
 }
@@ -133,26 +131,26 @@ button {
     flex-grow: 1;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Truncate long URLs */
+    text-overflow: ellipsis; 
     padding-right: 15px;
-    color: #90caf9; /* Light blue link color */
+    color: #90caf9; 
     font-size: 0.95em;
 }
 
 .delete-btn {
-    /* Specific styling for the list item delete button */
+   
     background-color: #4d4d4d;
     color: #e0e0e0;
     padding: 6px 12px;
     font-size: 0.9em;
-    margin-right: 0; /* Override global margin */
+    margin-right: 0; 
 }
 
 .delete-btn:hover {
     background-color: #707070;
 }
 
-/* Empty and Loading Messages */
+
 .empty-message, .loading-message {
     text-align: center;
     color: #888;

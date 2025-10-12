@@ -2,7 +2,7 @@ const browserAPI = window.browser || window.chrome;
 const BOOKMARK_KEY = 'blasphemySlateBookmarks'; 
 const FOLDER_KEY = 'blasphemySlateFolders'; 
 
-// --- FOLDER Management Functions ---
+// FOLDER Management Functions 
 
 export async function getFolders() {
     try {
@@ -31,7 +31,7 @@ export async function addFolder(name) {
 
     const currentFolders = await getFolders();
     
-    // Generates a simple ID from the name and a timestamp suffix
+
     const newFolder = {
         id: name.toLowerCase().replace(/\s/g, '-') + '-' + Date.now().toString().slice(-4),
         name: name,
@@ -56,7 +56,7 @@ export async function deleteFolder(idToDelete) {
 }
 
 
-// --- BOOKMARK Management Functions ---
+// BOOKMARK Management Functions 
 
 export async function getBookmarks() {
     try {
@@ -68,9 +68,7 @@ export async function getBookmarks() {
     }
 }
 
-/**
- * Helper to save the entire list of bookmarks. Used by update/reorder functions.
- */
+
 export async function setBookmarks(bookmarks) {
     try {
         await browserAPI.storage.local.set({ [BOOKMARK_KEY]: bookmarks });
