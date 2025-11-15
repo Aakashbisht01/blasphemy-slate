@@ -1,6 +1,6 @@
 # Blasphemy Slate: Minimalist Bookmark Manager
 
-[!(https://user-images.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/assets/popup-screenshot.png)]() A local-first, high-performance Chrome extension offering a fast and private alternative to standard browser bookmarks. It focuses on speed, organization, and data portability, working without any cloud dependency.
+A local-first, high-performance Chrome extension offering a fast and private alternative to standard browser bookmarks. It focuses on speed, organization, and data portability, working without any cloud dependency.
 
 ---
 
@@ -24,24 +24,19 @@
 
 ---
 
-## Project File Structure
-
-This extension uses a standard, modular structure:
-Blasphemy-Slate/ │ ├── manifest.json (Core extension manifest) │ ├── background/ │ ├── background.js (Service worker for context menus, notifications) │ └── utils/ │ └── storage.js (Handles all logic for talking to chrome.storage) │ ├── icons/ │ ├── icon16.png │ ├── icon48.png │ └── icon128.png │ ├── options/ │ ├── options.html (The main management dashboard UI) │ ├── options.css │ └── options.js (Logic for the dashboard, folders, import/export) │ └── popup/ ├── popup.html (The main extension popup UI) ├── popup.css └── popup.js (Logic for the popup, quick-saving, search)
----
-
 ## ⚙ Installation (Developer Mode)
 
 To run this extension locally:
 
 1.  **Clone or Download:** Get this project's files onto your local machine.
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+    git clone [https://github.com/Aakashbisht01/blasphemy-slate.git](https://github.com/Aakashbisht01/blasphemy-slate.git)
+    cd blasphemy-slate
     ```
 2.  **Open Extensions:** Navigate to `chrome://extensions` in your browser (Chrome, Edge, etc.).
 3.  **Enable Developer Mode:** Toggle the **Developer Mode** switch in the top-right corner.
 4.  **Load Unpacked:** Click the **Load unpacked** button that appears.
-5.  **Select Folder:** Select the top-level project directory (the one containing `manifest.json`).
+5.  **Select Folder:** Select the top-level `blasphemy-slate` directory you just cloned (the one containing `manifest.json`).
 
 The Blasphemy Slate icon should now appear in your browser's toolbar.
 
